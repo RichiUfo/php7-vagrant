@@ -1,0 +1,18 @@
+server {
+    listen 80 default_server;
+
+    server_name localhost good-news.ua;
+
+    index index.php;
+
+    root /var/www/app;
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
